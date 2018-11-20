@@ -1,0 +1,52 @@
+﻿body {
+    background-color: black;
+}
+
+
+#content {
+    background-image: url("https://gifimage.net/wp-content/uploads/2018/04/pastillas-gif-9.gif");
+    position: center;
+    color: white;
+    width: 420px;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    position: center;
+}
+
+#imagen {
+    background-image: url("https://www.meylab.com.mx/imagen/personalRojo.png");
+    background-repeat: no-repeat;
+    height: 210px;
+    background-size: 40%;
+    background-position: center;
+
+}
+
+#fondo {
+    background-image: url("https://proteopedia.org/wiki/images/d/d5/Z-DNA.gif");
+    background-repeat: no-repeat;
+    background-size: 40px;
+    height: 60px;
+    margin-left: 610px;
+    margin-top: -50px;
+}
+
+#Herramienta1 {
+    background-image: url("https://png.pngtree.com/element_origin_min_pic/16/11/27/eca85c6d4db957a8d09a625c6514ec29.jpg");
+    background-size: 340px;
+    background-repeat: no-repeat;
+    height: 350px;
+    margin-top: -390px;
+    margin-right: 850px;
+}
+
+#Herramienta2 {
+    background-image: url("https://png.pngtree.com/element_origin_min_pic/16/11/27/eca85c6d4db957a8d09a625c6514ec29.jpg");
+    background-repeat: no-repeat;
+    background-size: 340px;
+    height: 350px;
+    margin-left: 830px;
+    margin-top: -350px;
+    border-radius: 65px;
+}
+
