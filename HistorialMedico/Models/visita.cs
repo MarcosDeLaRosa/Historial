@@ -32,5 +32,8 @@ namespace HistorialMedico.Models
         public virtual doctor doctor { get; set; }
 
         public virtual paciente paciente { get; set; }
+
+        [NotMapped]
+        public List<paciente> ListaDePacientes { get; set; }
     }
 }

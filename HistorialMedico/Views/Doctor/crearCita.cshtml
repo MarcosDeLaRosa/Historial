@@ -1,0 +1,68 @@
+﻿@model HistorialMedico.Models.cita
+@{
+    ViewBag.Title = "crearCita";
+}
+
+<h2>crearCita</h2>
+
+<form action="/Doctor/crearCita" method="post">
+    <div class="form-horizontal">
+        <h4>visita</h4>
+        <hr />
+
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <h4>Paciente</h4>
+                @Html.DropDownListFor(model => model.id_pasiente, ViewBag.NombrePaciente as SelectList, "Cliente")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <h4>Doctor</h4>
+                @Html.DropDownListFor(model => model.id_doctor, ViewBag.NombreDoctor as SelectList, "Doctor")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <h4>Fecha de Consulta:</h4>
+                @Html.EditorFor(model => model.fechaDeConsulta, @DateTime.Now.Year )
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <h4>Fecha de Cita:</h4>
+                @Html.EditorFor(model => model.fechaDeCita, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <h4>Hora:</h4>
+                @Html.EditorFor(model => model.hora, new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <h4>Duracción:</h4>
+                @Html.EditorFor(model => model.duracion, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<div class="col-md-offset-2 col-md-10">
+    <a href="citaPaciente"><input type="submit" value="Cita de Paciente" class="btn btn-primary" /></a>
+</div>

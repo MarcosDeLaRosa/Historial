@@ -1,0 +1,76 @@
+﻿@model IEnumerable<HistorialMedico.Models.pagoConsulta>
+
+@{
+    ViewBag.Title = "PagoConsulta";
+}
+
+<h2>Pago De Consulta Por Dia</h2>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Paciente">
+<table class="table" id="myTable">
+    <tr>
+        <th>
+            Paciente
+        </th>
+        <th>
+            Precio de Consulta
+        </th>
+        <th>
+            Pago
+        </th>
+        <th>
+            Total
+        </th>
+        <th>
+            Fecha
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precioConsulta.costo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pago)
+        </td>
+        <td id="Totals">
+            @Html.DisplayFor(modelItem => item.total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.ActionLink("TotalFecha", "Doctor", new { id = item.fecha })
+        </td>
+    </tr>
+    }
+
+</table>
+<h2>Total Recaudado: <label id="Total"></label></h2>
+<script>
+    function myFunction() {
+
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[4];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+    }
+</script>

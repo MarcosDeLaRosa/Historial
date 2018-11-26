@@ -1,0 +1,57 @@
+﻿@model IEnumerable<HistorialMedico.Models.cita>
+
+@{
+    ViewBag.Title = "citaPaciente";
+}
+
+<h2>citaPaciente</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Nombre
+        </th>
+        <th>
+           Doctor
+        </th>
+        <th>
+            Fecha de Consulta
+        </th>
+        <th>
+            Fecha de Cita
+        </th>
+        <th>
+            Hora
+        </th>
+        <th>
+            Duracción
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente.apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaDeConsulta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaDeCita)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.duracion)
+        </td>
+    </tr>
+}
+
+</table>

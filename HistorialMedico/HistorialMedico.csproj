@@ -51,6 +51,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -155,7 +158,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\asistentesController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -169,6 +171,21 @@
     <Compile Include="Models\paciente.cs" />
     <Compile Include="Models\pagoConsulta.cs" />
     <Compile Include="Models\precioConsulta.cs" />
+    <Compile Include="Models\Procedure.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Procedure.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Procedure.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Procedure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Procedure.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Procedure.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\usuario.cs" />
     <Compile Include="Models\visita.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -183,10 +200,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Procedure.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Procedure.edmx</DependentUpon>
+      <LastGenOutput>Procedure.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Procedure.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Procedure.edmx</DependentUpon>
+      <LastGenOutput>Procedure.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\Procedure.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Procedure.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Procedure.edmx.diagram">
+      <DependentUpon>Procedure.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -217,6 +251,13 @@
     <Content Include="Views\Login\Error.cshtml" />
     <Content Include="Views\Doctor\Index.cshtml" />
     <Content Include="Views\Doctor\Create.cshtml" />
+    <Content Include="Views\Doctor\CrearVisita.cshtml" />
+    <Content Include="Views\Doctor\visitaPaciente.cshtml" />
+    <Content Include="Views\Doctor\ImprimirReceta.cshtml" />
+    <Content Include="Views\Doctor\crearCita.cshtml" />
+    <Content Include="Views\Doctor\citaPaciente.cshtml" />
+    <Content Include="Views\Doctor\PagoConsulta.cshtml" />
+    <Content Include="Views\Doctor\TotalFecha.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

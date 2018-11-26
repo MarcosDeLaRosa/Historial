@@ -188,3 +188,4 @@ C:\Users\lenovo\source\repos\HistorialMedico\Historial\HistorialMedico\obj\Debug
 C:\Users\lenovo\source\repos\HistorialMedico\Historial\HistorialMedico\obj\Debug\HistorialMedico.csproj.CopyComplete
 C:\Users\lenovo\source\repos\HistorialMedico\Historial\HistorialMedico\obj\Debug\HistorialMedico.dll
 C:\Users\lenovo\source\repos\HistorialMedico\Historial\HistorialMedico\obj\Debug\HistorialMedico.pdb
+C:\Users\lenovo\source\repos\HistorialMedico\Historial\HistorialMedico\bin\itextsharp.dll
