@@ -1,0 +1,82 @@
+﻿@model HistorialMedico.Models.usuario
+
+@{
+    ViewBag.Title = "Delete";
+}
+<center>
+    <h1 style="color:red">Eliminar Usuario</h1>
+
+    <h3>Estas seguro que deseas eliminar este usuario?</h3>
+</center>
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contrasena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contrasena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.roles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.roles)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Atras", "Index", null, new { @Class = "btn btn-danger glyphicon glyphicon-triangle-left" })
+        </div>
+    }
+</div>

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<HistorialMedico.Models.usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<center>
+    <h1 style="color:red">Admin Panel</h1>
+</center>
+<style>
+    .mod {
+        color: red;
+        text-decoration: none;
+        text-transform: none;
+    }
+</style>
+<p>
+    @Html.ActionLink(" CrearUsuario", "Create", null, new { @class = "btn btn-primary glyphicon glyphicon-plus" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuario1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contrasena)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.roles)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Foto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usuario1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contrasena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.roles)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.id_usuario }, new { @class = "glyphicon glyphicon-edit" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.id_usuario }, new { @class = "glyphicon glyphicon-eye-open" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.id_usuario }, new { @class = "glyphicon glyphicon-trash mod" })
+            </td>
+        </tr>
+    }
+
+</table>

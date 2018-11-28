@@ -70,8 +70,6 @@ namespace HistorialMedico.Controllers
         [HttpPost]
         public ActionResult CreateVisita([Bind(Include = "id_paciente,id_doctor,motivo,comentario,recetaDeMedicmentos,fechaProximaVisita")]visita visita)
         {
-
-
             if (ModelState.IsValid)
             {
                 db.visita.Add(visita);
