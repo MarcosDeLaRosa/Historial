@@ -16,14 +16,14 @@
         <div class="form-group">
             <div class="col-md-10">
                 <h4>Paciente</h4>
-                @Html.DropDownListFor(model => model.id_paciente, ViewBag.NombrePaciente as SelectList, "Cliente")
+                @Html.DropDownListFor(model => model.id_paciente, ViewBag.NombrePaciente as SelectList, "Cliente", new {@Class="btn btn-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
                 <h4>Doctor</h4>
-                @Html.DropDownListFor(model => model.id_doctor, ViewBag.NombreDoctor as SelectList, "Doctor")
+                @Html.DropDownListFor(model => model.id_doctor, ViewBag.NombreDoctor as SelectList, "Doctor", new {@Class="btn btn-danger" })
             </div>
         </div>
 
