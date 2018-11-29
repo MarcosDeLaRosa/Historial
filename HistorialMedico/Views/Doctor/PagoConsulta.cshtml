@@ -5,7 +5,8 @@
 }
 
 <h2>Pago De Consulta Por Dia</h2>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Paciente">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Fecha">
+<input type="submit" value="calcular" onclick="CalcularTotal();" class="btn btn-info" />
 <table class="table" id="myTable">
     <tr>
         <th>
@@ -21,7 +22,7 @@
             Total
         </th>
         <th>
-            Fecha
+            Fecha
         </th>
     </tr>
 
@@ -37,23 +38,33 @@
         <td>
             @Html.DisplayFor(modelItem => item.pago)
         </td>
-        <td id="Totals">
+        <td class="deuda">
             @Html.DisplayFor(modelItem => item.total)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha)
-        </td>
-        <td>
-            @Html.ActionLink("TotalFecha", "Doctor", new { id = item.fecha })
-        </td>
+        <td>@Html.ValueFor(modelItem => item.fecha, "{0:dd/MM/yyyy}")</td>
     </tr>
     }
 
 </table>
-<h2>Total Recaudado: <label id="Total"></label></h2>
-<script>
-    function myFunction() {
+<h4>El total por dia es:  <label id="total"> </label> </h4>
+<h4><label id="Ingresar"> </label> </h4>
 
+<script>
+    function CalcularTotal() {
+        var veri = document.getElementById("myInput").value;
+        if (veri) {
+            document.getElementById("Ingresar").innerHTML = "";
+            var totalDeuda = 0;
+            $(".deuda").each(function () {
+                totalDeuda += parseInt($(this).html()) || 0;
+            });
+            document.getElementById("total").innerHTML = totalDeuda;
+        } else {
+            document.getElementById("Ingresar").innerHTML = "Ingrese una fecha para saber el total por dia" ;
+        }
+    }
+
+    function myFunction() {
         var input, filter, table, tr, td, i;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
@@ -68,6 +79,7 @@
                     tr[i].style.display = "";
                 } else {
                     tr[i].style.display = "none";
+                    tr[i].innerHTML = 0;
                 }
             }
         }

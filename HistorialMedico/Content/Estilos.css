@@ -13,13 +13,16 @@
     position: center;
 }
 
+#Ingresar {
+color: red;
+}
+
 #imagen {
     background-image: url("https://www.meylab.com.mx/imagen/personalRojo.png");
     background-repeat: no-repeat;
     height: 210px;
     background-size: 40%;
     background-position: center;
-
 }
 
 #fondo {
