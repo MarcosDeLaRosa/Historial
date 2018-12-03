@@ -1,0 +1,78 @@
+﻿@model IEnumerable<HistorialMedico.Models.cita>
+
+@{
+    ViewBag.Title = "Calendario";
+}
+
+<h2>Calendario</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Fecha de Cita">
+<table class="table" id="myTable">
+    <tr>
+        <th>
+            Doctor
+        </th>
+        <th>
+            Cedula del Paciente
+        </th>
+        <th>
+            Fecha de Consulta
+        </th>
+        <th>
+            Fecha de Cita
+        </th>
+        <th>
+            Hora
+        </th>
+        <th>
+            Duracción
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.doctor.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente.cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaDeConsulta, "{0:dd/MM/yyyy}")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaDeCita, "{0:dd/MM/yyyy}")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.duracion)
+        </td>
+    </tr>
+}
+
+</table>
+
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+    }
+</script>

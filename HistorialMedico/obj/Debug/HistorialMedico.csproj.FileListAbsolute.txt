@@ -183,7 +183,6 @@ C:\Users\lenovo\source\repos\HistorialMedico\Historial\HistorialMedico\bin\Micro
 C:\Users\lenovo\source\repos\HistorialMedico\Historial\HistorialMedico\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\lenovo\source\repos\HistorialMedico\Historial\HistorialMedico\bin\Microsoft.AI.Web.xml
 C:\Users\lenovo\source\repos\HistorialMedico\Historial\HistorialMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\lenovo\source\repos\HistorialMedico\Historial\HistorialMedico\obj\Debug\HistorialMedico.csprojAssemblyReference.cache
 C:\Users\lenovo\source\repos\HistorialMedico\Historial\HistorialMedico\obj\Debug\HistorialMedico.csproj.CoreCompileInputs.cache
 C:\Users\lenovo\source\repos\HistorialMedico\Historial\HistorialMedico\obj\Debug\HistorialMedico.csproj.CopyComplete
 C:\Users\lenovo\source\repos\HistorialMedico\Historial\HistorialMedico\obj\Debug\HistorialMedico.dll
@@ -285,3 +284,4 @@ C:\Users\hjuni\Documents\ProjectFinal\Historial\HistorialMedico\obj\Debug\Histor
 C:\Users\hjuni\Documents\ProjectFinal\Historial\HistorialMedico\obj\Debug\HistorialMedico.csproj.CopyComplete
 C:\Users\hjuni\Documents\ProjectFinal\Historial\HistorialMedico\obj\Debug\HistorialMedico.dll
 C:\Users\hjuni\Documents\ProjectFinal\Historial\HistorialMedico\obj\Debug\HistorialMedico.pdb
+C:\Users\lenovo\source\repos\HistorialMedico\Historial\HistorialMedico\obj\Debug\HistorialMedico.csprojAssemblyReference.cache

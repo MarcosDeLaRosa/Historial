@@ -1,0 +1,35 @@
+﻿@model IEnumerable<HistorialMedico.Models.precioConsulta>
+
+@{
+    ViewBag.Title = "Costo";
+}
+
+<h2>Costo</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.doctor.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.costo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.doctor.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.costo)
+        </td>
+        <td>
+            @Html.ActionLink("Costo", "CostoD", new { id=item.id_precioConsulta })
+        </td>
+    </tr>
+}
+
+</table>
