@@ -158,5 +158,10 @@ namespace HistorialMedico.Controllers
         {
             return View(db.paciente.ToList());
         }
+
+        public ActionResult PagoConsulta()
+        {
+            return View();
+        }
     }
 }
