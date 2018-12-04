@@ -1,0 +1,61 @@
+﻿@model IEnumerable<HistorialMedico.Models.cita>
+
+@{
+    ViewBag.Title= "Index";
+}
+
+<center>
+    <h2>Ver Citas</h2>
+</center>
+
+<div class="form-horizontal">
+    <hr />
+    <input type="text" class="form-control" id="search" placeholder="Buscador" />
+    <hr />
+</div>
+
+<br />
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_doctor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaDeConsulta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_cita)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.duracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaDeCita)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_doctor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaDeConsulta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_cita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.duracion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaDeCita)
+            </td>
+        </tr>
+        
+    }
+
+</table>

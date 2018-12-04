@@ -128,6 +128,35 @@ namespace HistorialMedico.Controllers
         {
             return View();
         }
-        
+
+        [HttpPost]
+        public ActionResult AsignarCita([Bind(Include = "id_pasiente,id_doctor,fechaDeConsulta,fechaDeCita,hora,duracion")]cita cita)
+        {
+
+            if (ModelState.IsValid)
+            {
+                db.cita.Add(cita);
+                db.SaveChanges();
+                return RedirectToAction("AsignarCita", "Asistente");
+
+            }
+            return View(cita);
+        }
+
+        [HttpGet]
+        public ActionResult AsignarCita()
+        {
+            return View();
+        }
+
+        public ActionResult ConsultarCalendarioCita()
+        {
+            return View(db.cita.ToList());
+        }
+
+        public ActionResult Cumpleaños()
+        {
+            return View(db.paciente.ToList());
+        }
     }
 }

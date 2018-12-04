@@ -15,7 +15,7 @@ namespace HistorialMedico.Controllers
 {
     public class DoctorController : Controller
     {
-    
+
         private HistorialMedicoContext db = new HistorialMedicoContext();
 
         // GET: Doctor
@@ -192,5 +192,7 @@ namespace HistorialMedico.Controllers
 
             return View(total.ToList());
         }
+
+
     }
 }

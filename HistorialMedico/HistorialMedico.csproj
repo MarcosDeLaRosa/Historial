@@ -243,6 +243,9 @@
     <Content Include="Views\Admin\Calendario.cshtml" />
     <Content Include="Views\Admin\Costo.cshtml" />
     <Content Include="Views\Admin\CostoD.cshtml" />
+    <Content Include="Views\Asistente\AsignarCita.cshtml" />
+    <Content Include="Views\Asistente\ConsultarCalendarioCita.cshtml" />
+    <Content Include="Views\Asistente\Cumpleaños.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

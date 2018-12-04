@@ -1,14 +1,17 @@
-﻿@model IEnumerable<HistorialMedico.Models.asistente>
+﻿@model IEnumerable<HistorialMedico.Models.cita>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-<hr />
+<center>
+    <h2>Ver Citas</h2>
+</center>
 
 <div class="form-horizontal">
+    <hr />
     <input type="text" class="form-control" id="search" placeholder="Buscador" />
+    <hr />
 
     <p>
         @Html.ActionLink("Create New", "Create")
@@ -18,13 +21,14 @@
 
 
 <br />
-<table class="table">
+<table class="table table-striped">
+  
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nombre)
+            @Html.DisplayNameFor(model => model.id_asistente)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.apellido)
+            @Html.DisplayNameFor(model => model.id_pasiente)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.telefono)

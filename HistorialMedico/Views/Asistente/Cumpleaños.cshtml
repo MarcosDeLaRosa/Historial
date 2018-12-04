@@ -1,0 +1,87 @@
+﻿
+@model IEnumerable<HistorialMedico.Models.paciente>
+
+@{
+    Layout = "ReporteCumpleaños";
+}
+
+<h2>Reporte de Cumpleaños</h2>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Fecha">
+<input type="submit" value="calcular" onclick="CalcularTotal();" class="btn btn-info" />
+<table class="table" id="myTable">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Apellido
+        </th>
+        <th>
+            fecha
+        </th>
+        <th>
+            Telefono
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(model => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefono)
+            </td>
+            <td>
+                @Html.ValueFor(modelItem => item.fechaNacimiento, "{0:dd/MM/yyyy}")
+            </td>
+
+        </tr>
+    }
+
+</table>
+<h4>El total por dia es:  <label id="total"> </label> </h4>
+<h4><label id="Ingresar"> </label> </h4>
+
+<script>
+    function CalcularTotal() {
+        var veri = document.getElementById("myInput").value;
+        if (veri) {
+            document.getElementById("Ingresar").innerHTML = "";
+            var totalDeuda = 0;
+            $(".deuda").each(function () {
+                totalDeuda += parseInt($(this).html()) || 0;
+            });
+            document.getElementById("total").innerHTML = totalDeuda;
+        } else {
+            document.getElementById("Ingresar").innerHTML = "Ingrese una fecha para saber el total por dia" ;
+        }
+    }
+
+    function myFunction() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[4];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                    tr[i].innerHTML = 0;
+                }
+            }
+        }
+
+    }
+</script>
