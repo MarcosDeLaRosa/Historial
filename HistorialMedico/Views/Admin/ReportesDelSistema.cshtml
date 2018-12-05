@@ -4,19 +4,37 @@
     ViewBag.Title = "ReportesDelSistema";
 }
 
-<h2>Reportes Del Sistema</h2>
-<form action="/Admin/ResportesDeDoctores" method="post">
-    <a><button class="btn btn-danger">Doctores</button></a>
-    <br />
-    <br />
-</form>
-<form action="/Admin/ResportesDePacientes" method="post">
-    <a><button class="btn btn-danger">Pacientes</button></a>
-    <br />
-    <br />
-</form>
-<form action="/Admin/ResportesDeAsistentes" method="post">
-    <a><button class="btn btn-danger">Asistentes</button></a>
-    <br />
-    <br />
-</form>
+<center>
+    <h2>Reportes Del Sistema</h2>
+</center>
+<br />
+<br />
+<br />
+<center>
+    <div class="form-inline">
+        <div class="form-group">
+            <form action="/Admin/ResportesDeDoctores" method="post">
+                <h4>Doctores</h4>
+                <a><button style="background-image: url('http://www.mapagolaradiologia.com/images/drpagogaicono.png'); background-color:white; background-repeat: no-repeat; width: 250px; height: 250px;" class="btn btn-primary"></button></a>
+                <br />
+                <br />
+            </form>
+        </div>
+        <div class="form-group">
+            <form action="/Admin/ResportesDePacientes" method="post">
+                <h4>Pacientes</h4>
+                <a><button style="background-image: url('https://pngimage.net/wp-content/uploads/2018/06/pacientes-png-3.png'); background-size: 250px; background-color:white; background-repeat: no-repeat; width: 250px; height: 250px;" class="btn btn-primary"></button></a>
+                <br />
+                <br />
+            </form>
+        </div>
+        <div class="form-group">
+            <form action="/Admin/ResportesDeAsistentes" method="post">
+                <h4>Asistentes</h4>
+                <a><button style="background-image: url('https://images.vexels.com/media/users/3/144223/isolated/preview/f1d0807f8ffad0197757d840bdc97d0b-icono-de-registro-m-dico-by-vexels.png'); background-size: 250px; background-color:white; background-repeat: no-repeat; width: 250px; height: 250px;" class="btn btn-primary"></button></a>
+                <br />
+                <br />
+            </form>
+        </div>
+    </div>
+</center>

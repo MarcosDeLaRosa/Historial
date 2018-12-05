@@ -52,6 +52,7 @@ namespace HistorialMedico.Controllers
 
                 roles.Add(new SelectListItem { Value = "doctor", Text = "Doctor" });
                 roles.Add(new SelectListItem { Value = "asistente", Text = "Asistente" });
+                roles.Add(new SelectListItem { Value = "admin", Text = "Administrador" });
 
                 ViewBag.RolSelectList = roles;
             }
@@ -64,29 +65,46 @@ namespace HistorialMedico.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_usuario,Nombre,Apellido,Correo,Foto,usuario1,contrasena,roles")] usuario usuario, string telefono,
-            [Bind(Include = "Nombre,Apellido,Correo,Foto")] asistente asistente, [Bind(Include = "Nombre,Apellido,Correo,Foto")] doctor doctor)
+        public ActionResult Create([Bind(Include = "id_usuario,Nombre,Apellido,Correo,usuario1,contrasena,roles")] usuario usuario, string telefono, HttpPostedFileBase InputFile,
+            [Bind(Include = "Nombre,Apellido,Correo")] asistente asistente, [Bind(Include = "Nombre,Apellido,Correo")] doctor doctor)
         {
-            if (ModelState.IsValid)
-            {
+            try {
+                if (ModelState.IsValid)
+                {
 
-                string resultado = string.Empty;
-                Byte[] encriptar = System.Text.Encoding.Unicode.GetBytes(usuario.contrasena);
-                resultado = Convert.ToBase64String(encriptar);
-                usuario.contrasena = resultado;
-                db.usuario.Add(usuario);
-                db.SaveChanges();
-                if (usuario.roles == "asistente") {
-                    asistente.telefono = telefono;
-                    db.asistente.Add(asistente);
-                    db.SaveChanges();
+                    string resultado = string.Empty;
+                    Byte[] encriptar = System.Text.Encoding.Unicode.GetBytes(usuario.contrasena);
+                    resultado = Convert.ToBase64String(encriptar);
+                    usuario.contrasena = resultado;
+                    if (InputFile != null && InputFile.ContentLength > 0)
+                    {
+                        byte[] imagenData = null;
+                        using (var imagen = new BinaryReader(InputFile.InputStream))
+                        {
+                            imagenData = imagen.ReadBytes(InputFile.ContentLength);
+                        }
+                        usuario.Foto = imagenData;
+                        db.usuario.Add(usuario);
+                        db.SaveChanges();
+                    if (usuario.roles == "asistente") {
+                        asistente.telefono = telefono;
+                        asistente.foto = imagenData;
+                        db.asistente.Add(asistente);
+                        db.SaveChanges();
 
-                } else if (usuario.roles == "doctor") {
-                    doctor.telefono = telefono;
-                    db.doctor.Add(doctor);
-                    db.SaveChanges();
+                    } else if (usuario.roles == "doctor") {
+                        doctor.telefono = telefono;
+                        doctor.foto = imagenData;
+                        db.doctor.Add(doctor);
+                        db.SaveChanges();
+                    }
+                    }
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
+            }
+            catch (Exception e) {
+
+
             }
 
             return View(usuario);
@@ -112,13 +130,27 @@ namespace HistorialMedico.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_usuario,Nombre,Apellido,Correo,Foto,usuario1,contrasena,roles")] usuario usuario)
+        public ActionResult Edit([Bind(Include = "id_usuario,Nombre,Apellido,Correo,usuario1,contrasena,roles")] usuario usuario, HttpPostedFileBase imagefile)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usuario).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try {
+                    if (imagefile != null && imagefile.ContentLength > 0)
+                    {
+                        byte[] imagenData = null;
+                        using (var imagen = new BinaryReader(imagefile.InputStream))
+                        {
+                            imagenData = imagen.ReadBytes(imagefile.ContentLength);
+                        }
+                        usuario.Foto = imagenData;
+                    }
+                    db.Entry(usuario).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception e) {
+
+                }
             }
             return View(usuario);
         }
@@ -391,6 +423,30 @@ namespace HistorialMedico.Controllers
                 return RedirectToAction("Costo");
             }
             return View(precioConsulta);
+        }
+
+        public ActionResult convertirImagen(int codigo)
+        {
+            var imagen = (from usuario in db.usuario
+             where usuario.id_usuario == codigo
+            select usuario.Foto).FirstOrDefault();
+            return File(imagen, "Imagenes/jpg");
+        }
+
+        public ActionResult convertirImagenA(int codigo)
+        {
+            var imagen = (from asistente in db.asistente
+                          where asistente.id_asistente == codigo
+                          select asistente.foto).FirstOrDefault();
+            return File(imagen, "Imagenes/jpg");
+        }
+
+        public ActionResult convertirImagenD(int codigo)
+        {
+            var imagen = (from doctor in db.doctor
+                          where doctor.id_doctor == codigo
+                          select doctor.foto).FirstOrDefault();
+            return File(imagen, "Imagenes/jpg");
         }
 
     }

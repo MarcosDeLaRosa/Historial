@@ -155,12 +155,13 @@ namespace HistorialMedico.Controllers
         }
 
         [HttpPost]
-        public ActionResult crearCita([Bind(Include = "id_pasiente,id_doctor,fechaDeConsulta,fechaDeCita,hora,duracion")]cita cita)
+        public ActionResult crearCita([Bind(Include = "id_pasiente,id_doctor,fechaDeCita,hora,duracion")]cita cita)
         {
 
 
             if (ModelState.IsValid)
             {
+                cita.fechaDeConsulta = System.DateTime.Today;
                 db.cita.Add(cita);
                 db.SaveChanges();
                 return RedirectToAction("crearCita", "Doctor");

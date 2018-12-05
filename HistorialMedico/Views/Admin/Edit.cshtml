@@ -8,7 +8,7 @@
     <h1 style="color:red">Modificar Usuarios</h1>
 </center>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(Html.BeginForm("Edit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" })))
 {
     @Html.AntiForgeryToken()
 

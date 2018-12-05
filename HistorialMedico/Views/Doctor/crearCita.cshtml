@@ -28,15 +28,8 @@
 
         <div class="form-group">
             <div class="col-md-10">
-                <h4>Fecha de Consulta:</h4>
-                @Html.EditorFor(model => model.fechaDeConsulta, @DateTime.Now.Year )
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
                 <h4>Fecha de Cita:</h4>
-                @Html.EditorFor(model => model.fechaDeCita, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.fechaDeCita, new { htmlAttributes = new { @class = "form-control", type = "date" } })
             </div>
         </div>
 

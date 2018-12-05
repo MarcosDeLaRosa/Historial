@@ -334,7 +334,6 @@
     <Content Include="Views\Admin\ReportesDelSistema.cshtml" />
     <Content Include="Views\Admin\Calendario.cshtml" />
     <Content Include="Views\Admin\Costo.cshtml" />
-    <Content Include="Views\Admin\CostoD.cshtml" />
     <Content Include="Views\Asistente\AsignarCita.cshtml" />
     <Content Include="Views\Asistente\Cumpleaños.cshtml" />
     <Content Include="Views\Asistente\PagoConsulta.cshtml" />
@@ -396,9 +395,11 @@
     <Content Include="Views\Shared\_DoctorLayout\_DoctorLayout.cshtml" />
     <Content Include="Views\Shared\_AsistenteLayout\_AsistenteMenu.cshtml" />
     <Content Include="Views\Shared\_DoctorLayout\_DoctorMenu.cshtml" />
+    <Content Include="Views\Admin\CostoD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Imagenes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

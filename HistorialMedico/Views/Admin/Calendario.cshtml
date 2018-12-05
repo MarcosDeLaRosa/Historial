@@ -5,11 +5,16 @@
     ViewBag.Title = "Calendario";
 }
 
-<h2>Calendario</h2>
-
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Fecha de Cita">
+<center>
+    <h2>Calendario</h2>
+    <hr style="background-color: blue; height: 3px;" />
+</center>
+<div class="form-inline" style="margin-left: 640px;">
+   @Html.Label("Fecha de Cita: ") <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="dd/MM/yyyy">
+</div>
+<br />
 <table class="table" id="myTable">
-    <tr>
+    <tr class="btn-primary">
         <th>
             Doctor
         </th>
@@ -31,7 +36,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr  class="active">
         <td>
             @Html.DisplayFor(modelItem => item.doctor.nombre)
         </td>

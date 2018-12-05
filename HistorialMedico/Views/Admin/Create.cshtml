@@ -6,20 +6,17 @@
     List<SelectListItem> listaroles = ViewBag.RolSelectList;
 }
 <center>
-    <h1 style="color:red;">Crear Usuario</h1>
+    <h1 style="color:blue;">Crear Usuario</h1>
 </center>
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <center>
-        <h4>Formulario de Registro</h4>
-    </center>
     <hr />
 
     <center>
-        <div class="form-inline">
+        <div class="form-inline"  style="margin-left: 20px;">
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -39,7 +36,7 @@
                 @Html.LabelFor(model => model.Apellido, htmlAttributes: new { @class = "control-label col-md-2" })
 
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control", @style = "margin-left: 30px;" } })
                     @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
                 </div>
 
@@ -52,7 +49,7 @@
     <hr />
 
     <center>
-        <div class="form-inline">
+        <div class="form-inline"  style="margin-right: 50px;">
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Correo, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -63,10 +60,9 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label col-md-2", @style = "margin-left: 7px;" })
                 <div class="col-md-offset-3">
-                    <input type="file" name="InputFile" required />
-
+                    <input accept=".jpg" style="width: 210px; margin-left: 50px;" type="file" name="InputFile" required class="btn btn-primary" />
                 </div>
             </div>
 
@@ -76,7 +72,7 @@
     </center>
 
     <center>
-        <div class="form-inline">
+        <div class="form-inline" style="margin-right: 110px;">
 
             <div class="form-group">
                 @Html.LabelFor(model => model.usuario1, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -89,26 +85,29 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.contrasena, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-offset-7">
-                    @Html.EditorFor(model => model.contrasena, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.contrasena, new { htmlAttributes = new { @class = "form-control", type = "password" } })
                     @Html.ValidationMessageFor(model => model.contrasena, "", new { @class = "text-danger" })
                 </div>
             </div>
             <hr />
-            @Html.Label("Telefono")
-            <input type="text" class="form-control" name="telefono" />
         </div>
     </center>
 
     <center>
-        <div class="form-group">
-            @*Html.LabelFor(model => model.roles, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md">
-                @Html.EditorFor(model => model.roles, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.roles, "", new { @class = "text-danger" })*@
+        <div class="form-inline" style="margin-left: 10px;">
+            <div class="form-group">
 
-            @Html.DropDownListFor(model => model.roles, listaroles, "Seleccione un Rol", new { @class = "btn btn-danger" })
+                @Html.Label("Telefono")
+                <input type="text" class="form-control" name="telefono" style="margin-left: 15px;" />
+                @*Html.LabelFor(model => model.roles, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md">
+            @Html.EditorFor(model => model.roles, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.roles, "", new { @class = "text-danger" })*@
+                @Html.Label("Role", new { @style="margin-left: 10px;" })
+                @Html.DropDownListFor(model => model.roles, listaroles, "Seleccione un Rol", new { @class = "btn btn-primary", @style = "margin-left: 65px; width: 200px; " })
 
-        </div>
+            </div>
+            </div>
     </center>
     @*</div>*@
 
@@ -118,7 +117,7 @@
         <div class="form-group">
 
             <div class="">
-                <input type="submit" value="Create" class="btn btn-danger" />
+                <input type="submit" style="width: 250px;" value="Create" class="btn btn-primary" />
             </div>
 
         </div>
@@ -126,7 +125,3 @@
 
 </div>
 }
-
-<div>
-    @Html.ActionLink("Atras", "Index", null, new { @class = "btn btn-danger glyphicon glyphicon-triangle-left" })
-</div>

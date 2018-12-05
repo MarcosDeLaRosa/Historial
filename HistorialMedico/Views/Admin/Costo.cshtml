@@ -5,11 +5,13 @@
     ViewBag.Title = "Costo";
 }
 
-<h2>Costo</h2>
-
-
+<center>
+    <h2>Costo de Consulta</h2>
+    <hr style="background-color: blue; height: 3px;" />
+</center>
+<br />
 <table class="table">
-    <tr>
+    <tr class="btn-primary">
         <th>
             @Html.DisplayNameFor(model => model.doctor.nombre)
         </th>
@@ -20,7 +22,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr class="active">
         <td>
             @Html.DisplayFor(modelItem => item.doctor.nombre)
         </td>
@@ -28,7 +30,7 @@
             @Html.DisplayFor(modelItem => item.costo)
         </td>
         <td>
-            @Html.ActionLink("Costo", "CostoD", new { id=item.id_precioConsulta })
+            @Html.ActionLink("Actualizar Costo", "CostoD", new { id=item.id_precioConsulta }, new { @Class = "btn btn-primary" })
         </td>
     </tr>
 }

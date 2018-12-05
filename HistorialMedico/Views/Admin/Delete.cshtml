@@ -42,7 +42,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Foto)
+            <img style="width: 100px;" src="@Url.Action("convertirImagen","Admin", new { codigo = Model.id_usuario})" />
         </dd>
 
         <dt>
@@ -51,14 +51,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.usuario1)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.contrasena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.contrasena)
         </dd>
 
         <dt>

@@ -46,6 +46,10 @@ namespace HistorialMedico.Controllers
                     {
                         return RedirectToAction("Index", "Asistente");
                     }
+                    else if (usuario.roles == "admin")
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
                 }
             }
             else

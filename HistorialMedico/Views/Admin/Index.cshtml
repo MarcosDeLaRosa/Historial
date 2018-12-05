@@ -6,7 +6,7 @@
 }
 
 <center>
-    <h1 style="color:red">Admin Panel</h1>
+    <h1 style="color:blue; font-style:italic">Admin Panel</h1>
 </center>
 <style>
     .mod {
@@ -18,7 +18,12 @@
 <p>
     @Html.ActionLink("CrearUsuario", "Create", null, new { @class = "btn btn-primary glyphicon glyphicon-plus" })
 </p>
-<table class="table table-striped">
+<div class="form-inline">
+    @Html.Label("Filtar por Nombre: ") <input style="width:170px;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Usuario" class="form-control">
+    @Html.Label("Filtar por Email: ", new { @style= "margin-left: 10px;" })<input type="text" style="width:170px;" id="myInpu" onkeyup="myFunctio()" placeholder="Email" class="form-control">
+</div>
+<br />
+<table class="table table-striped" id="myTable">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
@@ -34,9 +39,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.usuario1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.contrasena)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.roles)
@@ -57,23 +59,64 @@
                 @Html.DisplayFor(modelItem => item.Correo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Foto)
+                <img style="width: 100px;" src="@Url.Action("convertirImagen","Admin", new { codigo = item.id_usuario})" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.usuario1)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.contrasena)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.roles)
             </td>
             <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.id_usuario }, new { @class = "glyphicon glyphicon-edit" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.id_usuario }, new { @class = "glyphicon glyphicon-eye-open" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.id_usuario }, new { @class = "glyphicon glyphicon-trash mod" })
-            </td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.id_usuario }, new { @class = "glyphicon glyphicon-edit" })
+                    @Html.ActionLink(" ", "Details", new { id = item.id_usuario }, new { @class = "glyphicon glyphicon-eye-open", @style = "margin-left: 5px;" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.id_usuario }, new { @class = "glyphicon glyphicon-trash mod", @style = "margin-left: 5px;" })
+                    </td>
         </tr>
     }
 
 </table>
+
+<script>
+    function myFunction() {
+
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function myFunctio() {
+
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInpu");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
