@@ -5,16 +5,20 @@
     ViewBag.Title = "Index";
 }
 
-<div class="form-horizontal">
     <center>
-        <input type="button" class="glyphicon glyphicon-gift" />
         <h2>Reporte de Cumpleaños</h2>
+        <br />
     </center>
-</div>
 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Fecha" class="form-control">
+    <div class="form-group">
 
-<br />
+        <div class="form-group">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Fecha" class="form-group">
+            <input type="button" class="btn btn-primary btn-lg " value="Generar factura" />
+        </div>
+    </div>
+
+
 
 <table class="table table-striped" id="myTable">
     <tr>
@@ -54,6 +58,12 @@
 
 </table>
 
+<div class="form-horizontal">
+
+    
+
+</div>
+
 @*<h4><label id="Ingresar"> </label> </h4>*@
 
 <script>
@@ -69,7 +79,9 @@
         for (i = 0; i < tr.length; i++)
 
             td = tr[i].getElementsByTagName("td")[0];
+
         if (td) {
+
             if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                 tr[i].style.display = "";
             } else {
