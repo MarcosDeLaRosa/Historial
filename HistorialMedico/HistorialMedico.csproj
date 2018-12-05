@@ -330,14 +330,12 @@
     <Content Include="Views\Asistente\Delete.cshtml" />
     <Content Include="Views\Asistente\Details.cshtml" />
     <Content Include="Views\Asistente\Edit.cshtml" />
-    <Content Include="Views\Asistente\Index.cshtml" />
     <Content Include="Views\Asistente\CrearPaciente.cshtml" />
     <Content Include="Views\Admin\ReportesDelSistema.cshtml" />
     <Content Include="Views\Admin\Calendario.cshtml" />
     <Content Include="Views\Admin\Costo.cshtml" />
     <Content Include="Views\Admin\CostoD.cshtml" />
     <Content Include="Views\Asistente\AsignarCita.cshtml" />
-    <Content Include="Views\Asistente\ConsultarCalendarioCita.cshtml" />
     <Content Include="Views\Asistente\Cumpleaños.cshtml" />
     <Content Include="Views\Asistente\PagoConsulta.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
