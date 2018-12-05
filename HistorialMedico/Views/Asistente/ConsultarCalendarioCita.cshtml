@@ -18,7 +18,7 @@
 <br />
 <table class="table"  id="myTable">
 
-    <tr>
+    <tr class="btn-danger">
         <th>
             Doctor
         </th>
@@ -49,6 +49,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.fechaDeCita)
+            </td>
+            <td>
+                @Html.ActionLink("Imprimir Cita", "ImprimirCitas", new { id = item.id_cita }, new { @Class="btn btn-danger" })
             </td>
         </tr>
 

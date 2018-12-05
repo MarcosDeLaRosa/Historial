@@ -393,8 +393,27 @@ namespace HistorialMedico.Controllers
 
 
         public ActionResult Costo() {
-
+            var getnameDoctor = db.doctor.ToList();
+            SelectList lista = new SelectList(getnameDoctor, "id_doctor", "nombre");
+            ViewBag.NombreDoctor = lista;
             return View(db.precioConsulta.ToList());
+        }
+
+
+        public ActionResult CrearCosto()
+        {
+            var getnameDoctor = db.doctor.ToList();
+            SelectList lista = new SelectList(getnameDoctor, "id_doctor", "nombre");
+            ViewBag.NombreDoctor = lista;
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult CrearCosto([Bind(Include = "id_precioConsulta,id_doctor,costo")] precioConsulta precioConsulta)
+        {
+
+            return View("Costo");
         }
 
 
@@ -410,6 +429,20 @@ namespace HistorialMedico.Controllers
                 return HttpNotFound();
             }
             return View(precioConsulta);
+        }
+
+        [HttpPost]
+        public ActionResult crearCostos([Bind(Include = "id_doctor,costo")] precioConsulta precioConsulta) {
+
+            if (ModelState.IsValid)
+            {
+                db.precioConsulta.Add(precioConsulta);
+                db.SaveChanges();
+                return RedirectToAction("Costo", "Admin");
+            }
+
+
+                return View();
         }
 
 

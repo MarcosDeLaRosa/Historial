@@ -10,6 +10,8 @@
     <hr style="background-color: blue; height: 3px;" />
 </center>
 <br />
+<a href="/Admin/CrearCosto"><button type="button" class="btn btn-primary">Crear Costo de Doctor</button></a>
+
 <table class="table">
     <tr class="btn-primary">
         <th>
@@ -21,18 +23,19 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr class="active">
-        <td>
-            @Html.DisplayFor(modelItem => item.doctor.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.costo)
-        </td>
-        <td>
-            @Html.ActionLink("Actualizar Costo", "CostoD", new { id=item.id_precioConsulta }, new { @Class = "btn btn-primary" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr class="active">
+            <td>
+                @Html.DisplayFor(modelItem => item.doctor.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.costo)
+            </td>
+            <td>
+                @Html.ActionLink("Actualizar Costo", "CostoD", new { id = item.id_precioConsulta }, new { @Class = "btn btn-primary" })
+            </td>
+        </tr>
+    }
 
 </table>

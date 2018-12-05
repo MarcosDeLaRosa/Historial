@@ -1,65 +1,84 @@
-﻿@model HistorialMedico.Models.asistente
+﻿@model HistorialMedico.Models.paciente
 
 @{
     Layout = "~/Views/Shared/_AsistenteLayout/_AsistenteLayout.cshtml";
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>asistente</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.apellido)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.apellido)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.telefono)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.telefono)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.correo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.correo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.foto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.foto)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+    <h3>Desea eliminar este paciente?</h3>
+    <div>
+        <h4>paciente</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.cedula)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.cedula)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.nombre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.nombre)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.apellido)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.apellido)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.fechaNacimiento)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.fechaNacimiento)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.correo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.correo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.telefono)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.telefono)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tipodeSangre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tipodeSangre)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.foto)
+            </dt>
+    
+            <dd>
+                <img style="width: 100px;" src="@Url.Action("convertirImagen","Asistente", new { codigo = Model.id_paciente})" />
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+            </div>
+        }
+    </div>

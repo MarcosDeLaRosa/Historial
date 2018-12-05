@@ -21,7 +21,7 @@ namespace HistorialMedico.Controllers
         // GET: Asistente
         public ActionResult Index()
         {
-            return View(db.asistente.ToList());
+            return View(db.paciente.ToList());
         }
 
         // GET: Asistente/Details/5
@@ -31,12 +31,12 @@ namespace HistorialMedico.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            asistente asistente = db.asistente.Find(id);
-            if (asistente == null)
+            paciente paciente = db.paciente.Find(id);
+            if (paciente == null)
             {
                 return HttpNotFound();
             }
-            return View(asistente);
+            return View(paciente);
         }
 
         // GET: Asistente/Create
@@ -50,16 +50,25 @@ namespace HistorialMedico.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_asistente,nombre,apellido,telefono,correo,foto")] asistente asistente)
+        public ActionResult Create([Bind(Include = "id_paciente,cedula,nombre,apellido,correo,fechaNacimiento,telefono,tipodeSangre")] paciente paciente, HttpPostedFileBase InputFile)
         {
             if (ModelState.IsValid)
             {
-                db.asistente.Add(asistente);
+                if (InputFile != null && InputFile.ContentLength > 0)
+                {
+                    byte[] imagenData = null;
+                    using (var imagen = new BinaryReader(InputFile.InputStream))
+                    {
+                        imagenData = imagen.ReadBytes(InputFile.ContentLength);
+                    }
+                    paciente.foto = imagenData;
+                }
+                db.paciente.Add(paciente);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(asistente);
+            return View(paciente);
         }
 
         // GET: Asistente/Edit/5
@@ -69,12 +78,12 @@ namespace HistorialMedico.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            asistente asistente = db.asistente.Find(id);
-            if (asistente == null)
+            paciente paciente = db.paciente.Find(id);
+            if (paciente == null)
             {
                 return HttpNotFound();
             }
-            return View(asistente);
+            return View(paciente);
         }
 
         // POST: Asistente/Edit/5
@@ -82,15 +91,24 @@ namespace HistorialMedico.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_asistente,nombre,apellido,telefono,correo,foto")] asistente asistente)
+        public ActionResult Edit([Bind(Include = "id_paciente,cedula,nombre,apellido,correo,fechaNacimiento,telefono,tipodeSangre")] paciente paciente, HttpPostedFileBase InputFile)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(asistente).State = EntityState.Modified;
+                if (InputFile != null && InputFile.ContentLength > 0)
+                {
+                    byte[] imagenData = null;
+                    using (var imagen = new BinaryReader(InputFile.InputStream))
+                    {
+                        imagenData = imagen.ReadBytes(InputFile.ContentLength);
+                    }
+                    paciente.foto = imagenData;
+                }
+                    db.Entry(paciente).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(asistente);
+            return View(paciente);
         }
 
         // GET: Asistente/Delete/5
@@ -100,21 +118,23 @@ namespace HistorialMedico.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            asistente asistente = db.asistente.Find(id);
-            if (asistente == null)
+            paciente paciente = db.paciente.Find(id);
+            if (paciente == null)
             {
                 return HttpNotFound();
             }
-            return View(asistente);
+            return View(paciente);
         }
 
         // POST: Asistente/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            asistente asistente = db.asistente.Find(id);
-            db.asistente.Remove(asistente);
+            paciente paciente = db.paciente.Find(id);
+            visita visita = db.visita.Where(e => e.id_paciente == id).FirstOrDefault();
+            db.visita.Remove(visita);
+            db.SaveChanges();
+            db.paciente.Remove(paciente);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -139,6 +159,7 @@ namespace HistorialMedico.Controllers
 
             if (ModelState.IsValid)
             {
+                cita.fechaDeConsulta = System.DateTime.Today;
                 db.cita.Add(cita);
                 db.SaveChanges();
                 return RedirectToAction("AsignarCita", "Asistente");
@@ -150,6 +171,13 @@ namespace HistorialMedico.Controllers
         [HttpGet]
         public ActionResult AsignarCita()
         {
+            var getname = db.paciente.ToList();
+            SelectList list = new SelectList(getname, "id_paciente", "nombre");
+            ViewBag.NombrePaciente = list;
+            var getnameDoctor = db.doctor.ToList();
+            SelectList lista = new SelectList(getnameDoctor, "id_doctor", "nombre");
+            ViewBag.NombreDoctor = lista;
+
             return View();
         }
 
@@ -216,10 +244,11 @@ namespace HistorialMedico.Controllers
 
         [HttpPost]
 
-        public ActionResult PagoDeConsulta([Bind(Include = "id_Paciente,id_PrecioConsulta,pago,total,fecha")] pagoConsulta pagoConsulta)
+        public ActionResult PagoDeConsulta([Bind(Include = "id_Paciente,id_PrecioConsulta,pago,fecha")] pagoConsulta pagoConsulta)
         {
             if (ModelState.IsValid)
             {
+                pagoConsulta.total = pagoConsulta.pago;
                 db.pagoConsulta.Add(pagoConsulta);
                 db.SaveChanges();
 
@@ -271,6 +300,63 @@ namespace HistorialMedico.Controllers
 
         }
 
+        public ActionResult convertirImagen(int codigo)
+        {
+            var imagen = (from paciente in db.paciente
+                          where paciente.id_paciente == codigo
+                          select paciente.foto).FirstOrDefault();
+            return File(imagen, "Imagenes/jpg");
+        }
+
+        public ActionResult ImprimirCitas(int id)
+        {
+
+
+            cita cita = db.cita.Find(id);
+            paciente paciente = db.paciente.Where(e => e.id_paciente == cita.id_pasiente).FirstOrDefault();
+            doctor doctor = db.doctor.Where(e => e.id_doctor == cita.id_pasiente).FirstOrDefault();
+            Document pdfDoc = new Document(PageSize.A4, 10, 10, 10, 10);
+
+            try
+            {
+                PdfWriter.GetInstance(pdfDoc, System.Web.HttpContext.Current.Response.OutputStream);
+
+                pdfDoc.Open();
+                string cadenaFinal = "";
+                cadenaFinal += "<br><center><h2>Cita</h2></center><br><br><div>" +
+                    "<h4> Fecha: " + paciente.nombre + "</h4>" +
+                    "<h4> Fecha: " + doctor.nombre + "</h4>" +
+                    "<h4> Fecha: " + cita.fechaDeCita + "</h4>" +
+                    "<h4> Fecha: " + cita.fechaDeConsulta + "</h4>" +
+                    "<h4> Fecha: " + cita.hora + "</h4>" +
+                    "<h4> Fecha: " + cita.duracion + "</h4>" +
+                    "</div>";
+
+                string strContent = cadenaFinal;
+
+                var parsedHtmlElements = HTMLWorker.ParseToList(new StringReader(strContent), null);
+
+                foreach (var htmlElement in parsedHtmlElements)
+                {
+                    pdfDoc.Add(htmlElement as IElement);
+                }
+
+                pdfDoc.Close();
+                Response.ContentType = "application/pdf";
+
+                Response.AddHeader("content-disposition", "attachment; filename=Receta.pdf");
+                System.Web.HttpContext.Current.Response.Write(pdfDoc);
+                Response.Flush();
+                Response.End();
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.ToString());
+            }
+
+            return View();
+        }
     }
 
 }

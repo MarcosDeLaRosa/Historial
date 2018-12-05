@@ -11,18 +11,10 @@
         <br />
     </center>
 
-    <div class="form-group">
-
-        <div class="form-group">
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Fecha" class="form-group">
-            <input type="button" class="btn btn-primary btn-lg " value="Generar factura" />
-        </div>
-    </div>
-
-
-
-<table class="table table-striped" id="myTable">
-    <tr>
+   <input type="text" id="myInput" class="form-control" style="width: 250px;" onkeyup="myFunction()" placeholder="Paciente">
+<br />
+<table class="table" id="myTable">
+    <tr class="btn-danger">
         <th>
             Nombre
         </th>
@@ -59,17 +51,9 @@
 
 </table>
 
-<div class="form-horizontal">
-
-    
-
-</div>
-
-@*<h4><label id="Ingresar"> </label> </h4>*@
-
 <script>
-
     function myFunction() {
+
         var input, filter, table, tr, td, i;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
@@ -77,20 +61,15 @@
         tr = table.getElementsByTagName("tr");
 
 
-        for (i = 0; i < tr.length; i++)
-
-            td = tr[i].getElementsByTagName("td")[0];
-
-        if (td) {
-
-            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-                
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
             }
         }
     }
-
-    
 </script>

@@ -11,19 +11,19 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Factura</h4>
+    <h2>Factura</h2>
     <hr />
     <div class="form-group">
         <div class="col-md-10">
             @Html.Label("Paciente")
-            @Html.DropDownListFor(model => model.id_Paciente, ViewBag.NombrePaciente as SelectList, "Paciente", new { @Class = "btn btn-danger", id = "nom" })
+            @Html.DropDownListFor(model => model.id_Paciente, ViewBag.NombrePaciente as SelectList, "Paciente", new { @Class = "btn btn-danger", id = "nom", style = "width: 220px;" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-10">
             @Html.Label("Costo")
-            @Html.DropDownListFor(model => model.id_PrecioConsulta, ViewBag.NombreDoctor as SelectList, "Doctor", new { @Class = "btn btn-danger", id = "cost" })
+            @Html.DropDownListFor(model => model.id_PrecioConsulta, ViewBag.NombreDoctor as SelectList, "Costo", new { @Class = "btn btn-danger", id = "cost", style="width: 220px; margin-left: 18px;" })
         </div>
     </div>
 
@@ -31,31 +31,22 @@
     <div class="form-group">
         <div class="col-md-10">
             @Html.Label("Pago")
-            @Html.EditorFor(model => model.pago, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.Label("Total")
-            @Html.EditorFor(model => model.total, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.pago, new { htmlAttributes = new { @class = "form-control", style = "width: 320px;" } })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-10">
             @Html.Label("Fecha")
-            <input type="date" name="fecha" class="form-control" />
-        </div>
-    </div>
-    <input type="hidden" id="nombre" name="nombre" class="form-control" />
-    <input type="hidden" id="costo" name="costo" class="form-control" />
+            <input type="date" name="fecha" style="width: 320px;" class="form-control" />
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" onclick="validar();" value="Create" class="btn btn-default" />
+            <input type="hidden" id="nombre" name="nombre" class="form-control" />
+            <input type="hidden" id="costo" name="costo" class="form-control" />
+            <br />
+            <input type="submit" onclick="validar();" value="Guardar" class="btn btn-danger" />
         </div>
     </div>
+
 </div>
 }
 

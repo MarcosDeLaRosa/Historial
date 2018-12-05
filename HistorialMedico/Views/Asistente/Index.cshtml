@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HistorialMedico.Models.asistente>
+﻿@model IEnumerable<HistorialMedico.Models.paciente>
 
 @{
     Layout = "~/Views/Shared/_AsistenteLayout/_AsistenteLayout.cshtml";
@@ -6,7 +6,7 @@
 }
 
     <table class="table">
-        <tr>
+        <tr  class="btn-danger">
             <th>
                 @Html.DisplayNameFor(model => model.nombre)
             </th>
@@ -26,7 +26,7 @@
         </tr>
     
     @foreach (var item in Model) {
-        <tr>
+        <tr class="btn-pinterest">
             <td>
                 @Html.DisplayFor(modelItem => item.nombre)
             </td>
@@ -40,12 +40,12 @@
                 @Html.DisplayFor(modelItem => item.correo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.foto)
+                <img style="width: 100px;" src="@Url.Action("convertirImagen","Asistente", new { codigo = item.id_paciente})" />
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.id_asistente }) |
-                @Html.ActionLink("Details", "Details", new { id=item.id_asistente }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.id_asistente })
+                @Html.ActionLink(" ", "Edit", new { id=item.id_paciente }, new { @class = "glyphicon glyphicon-edit" }) 
+                @Html.ActionLink(" ", "Details", new { id=item.id_paciente }, new { @class = "glyphicon glyphicon-eye-open", @style = "margin-left: 5px;" }) 
+                @Html.ActionLink(" ", "Delete", new { id=item.id_paciente }, new { @class = "glyphicon glyphicon-trash mod", @style = "margin-left: 5px;" })
             </td>
         </tr>
     }

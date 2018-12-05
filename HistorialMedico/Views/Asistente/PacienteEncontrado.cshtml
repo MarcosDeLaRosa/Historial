@@ -5,64 +5,36 @@
     Layout = "~/Views/Shared/_AsistenteLayout/_AsistenteLayout.cshtml";
     ViewBag.Title = "PacienteEncontrado";
 }
+<center>
+    <h2>Paciente Encontrado</h2>
+</center>
+<h5>El paciente ya existe en el sistema y estos son sus datos:</h5>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.cedula)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.apellido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fechaNacimiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.correo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.telefono)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipodeSangre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.foto)
-        </th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.cedula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fechaNacimiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.correo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tipodeSangre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.foto)
-            </td>
-        </tr>
-    }
-
-</table>
+@foreach (var item in Model)
+{
+    @Html.Label("Cedula: ");
+    @Html.DisplayFor(modelItem => item.cedula)
+    <br />
+    @Html.Label("Nombre: ");
+    @Html.DisplayFor(modelItem => item.nombre)
+    <br />
+    @Html.Label("Apellido: ");
+    @Html.DisplayFor(modelItem => item.apellido)
+    <br />
+    @Html.Label("Fecha de Nacimiento: ");
+    @Html.DisplayFor(modelItem => item.fechaNacimiento)
+    <br />
+    @Html.Label("Correo: ");
+    @Html.DisplayFor(modelItem => item.correo)
+    <br />
+    @Html.Label("Telefono: ");
+    @Html.DisplayFor(modelItem => item.telefono)
+    <br />
+    @Html.Label("Tipode de Sangre: ");
+    @Html.DisplayFor(modelItem => item.tipodeSangre)
+    <br />
+    @Html.Label("Foto: ");
+    <img style="width: 100px;" src="@Url.Action("convertirImagen","Asistente", new { codigo = item.id_paciente})" />
+}
 

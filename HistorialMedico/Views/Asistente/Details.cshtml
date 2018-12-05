@@ -1,59 +1,81 @@
-﻿@model HistorialMedico.Models.asistente
+﻿@model HistorialMedico.Models.paciente
 
 @{
     Layout = "~/Views/Shared/_AsistenteLayout/_AsistenteLayout.cshtml";
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>asistente</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.apellido)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.apellido)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.telefono)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.telefono)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.correo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.correo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.foto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.foto)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_asistente }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <div>
+        <h4>paciente</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.cedula)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.cedula)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.nombre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.nombre)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.apellido)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.apellido)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.fechaNacimiento)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.fechaNacimiento)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.correo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.correo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.telefono)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.telefono)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tipodeSangre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tipodeSangre)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.foto)
+            </dt>
+    
+            <dd>
+                <img style="width: 100px;" src="@Url.Action("convertirImagen","Asistente", new { codigo = Model.id_paciente})" />
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id_paciente }, new { @Class = "btn btn-primary" })
+    </p>

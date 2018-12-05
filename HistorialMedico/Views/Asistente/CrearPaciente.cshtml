@@ -9,87 +9,54 @@
 </center>
 <hr />
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm(Html.BeginForm("Create", "Asistente", FormMethod.Post, new { enctype = "multipart/form-data" })))
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        
-        <center> <h4>paciente</h4></center>
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.cedula, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.cedula, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.cedula, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-inline">
+        @Html.Label("Cedula")
+        @Html.EditorFor(model => model.cedula, new { htmlAttributes = new { @class = "form-control", style = "width: 250px;" } })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.apellido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.apellido, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.apellido, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @Html.Label("Nombre", new { style = "margin-left: 50px;" })
+        @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control", style = "width: 250px;" } })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.fechaNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.fechaNacimiento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.fechaNacimiento, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.correo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.correo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.telefono, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.tipodeSangre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.tipodeSangre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.tipodeSangre, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.foto, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-               <input type="file" name="foto" required" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-3 col-md-10">
-                <input type="submit" value="Create" class="btn btn-danger" />
-            </div>
-        </div>
     </div>
-}
+    <br />
+    <div class="form-inline">
 
-<div>
-    @Html.ActionLink("Atras", "Index", null, new {@Class="btn btn-danger glyphicon glyphicon-triangle-left" })
-</div>
+        @Html.Label("Apellido")
+        @Html.EditorFor(model => model.apellido, new { htmlAttributes = new { @class = "form-control", style = "width: 250px;" } })
+
+
+        @Html.Label("Fecha de Nacimiento", new { style = "margin-left: 40px;" })
+        @Html.EditorFor(model => model.fechaNacimiento, new { htmlAttributes = new { @class = "form-control", style = "width: 250px;" } })
+        @Html.ValidationMessageFor(model => model.fechaNacimiento, "", new { @class = "text-danger" })
+
+    </div>
+    <br />
+    <div class="form-inline">
+        @Html.Label("Correo")
+        @Html.EditorFor(model => model.correo, new { htmlAttributes = new { @class = "form-control", style = "width: 250px;" } })
+        @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
+
+
+        @Html.Label("Telefono", new { style = "margin-left: 50px;"})
+        @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control", style = "width: 250px;" } })
+    </div>
+    <br />
+    <div class="form-inline">
+        @Html.Label("Tipo de Sangre")
+        @Html.EditorFor(model => model.tipodeSangre, new { htmlAttributes = new { @class = "form-control", style = "width: 250px;" } })
+        @Html.Label("Foto")
+        <input accept=".jpg" style="width: 210px; margin-left: 420px; margin-top: -30px;" type="file" name="InputFile" required class="btn btn-danger" />
+    </div>
+    <div class="form-inline">
+        <br />
+        <input type="submit" value="Guardar" class="btn btn-danger" />
+       
+    </div>
+    }
