@@ -242,7 +242,7 @@ namespace HistorialMedico.Controllers
                 pdfDoc.Close();
                 Response.ContentType = "application/pdf";
 
-                Response.AddHeader("content-disposition", "attachment; filename=Receta.pdf");
+                Response.AddHeader("content-disposition", "attachment; filename=Doctor.pdf");
                 System.Web.HttpContext.Current.Response.Write(pdfDoc);
                 Response.Flush();
                 Response.End();
@@ -303,7 +303,7 @@ namespace HistorialMedico.Controllers
                 pdfDoc.Close();
                 Response.ContentType = "application/pdf";
 
-                Response.AddHeader("content-disposition", "attachment; filename=Receta.pdf");
+                Response.AddHeader("content-disposition", "attachment; filename=Paciente.pdf");
                 System.Web.HttpContext.Current.Response.Write(pdfDoc);
                 Response.Flush();
                 Response.End();
@@ -371,7 +371,7 @@ namespace HistorialMedico.Controllers
                 pdfDoc.Close();
                 Response.ContentType = "application/pdf";
 
-                Response.AddHeader("content-disposition", "attachment; filename=Receta.pdf");
+                Response.AddHeader("content-disposition", "attachment; filename=Asistente.pdf");
                 System.Web.HttpContext.Current.Response.Write(pdfDoc);
                 Response.Flush();
                 Response.End();

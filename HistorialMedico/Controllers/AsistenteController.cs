@@ -285,7 +285,7 @@ namespace HistorialMedico.Controllers
                 pdfDoc.Close();
                 Response.ContentType = "application/pdf";
 
-                Response.AddHeader("content-disposition", "attachment; filename=Receta.pdf");
+                Response.AddHeader("content-disposition", "attachment; filename=Consulta.pdf");
                 System.Web.HttpContext.Current.Response.Write(pdfDoc);
                 Response.Flush();
                 Response.End();
