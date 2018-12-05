@@ -338,7 +338,7 @@
     <Content Include="Views\Asistente\AsignarCita.cshtml" />
     <Content Include="Views\Asistente\Cumpleaños.cshtml" />
     <Content Include="Views\Asistente\PagoConsulta.cshtml" />
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout\_AdminLayout.cshtml" />
     <Content Include="Vendor\bootstrap-social\bootstrap-social.less" />
     <Content Include="Vendor\bootstrap-social\bootstrap-social.scss" />
     <Content Include="Vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
@@ -385,8 +385,17 @@
     <Content Include="Vendor\font-awesome\scss\_spinning.scss" />
     <Content Include="Vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Vendor\font-awesome\scss\_variables.scss" />
-    <Content Include="Views\Shared\_AdminMenu.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout\_AdminMenu.cshtml" />
     <Content Include="Views\Shared\_AdminSession.cshtml" />
+    <Content Include="Views\Asistente\VerificarCedula.cshtml" />
+    <Content Include="Views\Asistente\PagoDeConsulta.cshtml" />
+    <Content Include="Views\Asistente\PacienteEncontrado.cshtml" />
+    <Content Include="Views\Asistente\Index.cshtml" />
+    <Content Include="Views\Asistente\ConsultarCalendarioCita.cshtml" />
+    <Content Include="Views\Shared\_AsistenteLayout\_AsistenteLayout.cshtml" />
+    <Content Include="Views\Shared\_DoctorLayout\_DoctorLayout.cshtml" />
+    <Content Include="Views\Shared\_AsistenteLayout\_AsistenteMenu.cshtml" />
+    <Content Include="Views\Shared\_DoctorLayout\_DoctorMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -22,6 +22,8 @@ namespace HistorialMedico.Controllers
         [HttpPost]
         public ActionResult Login(string user, string password)
         {
+            ViewBag.isAdmin = true;
+
             if (user == null || password == null) {
                 return RedirectToAction("Error", "Login");
             }

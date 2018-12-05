@@ -21,6 +21,7 @@ namespace HistorialMedico.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            var isAdmin = ViewBag.isAdmin;
             return View(db.usuario.ToList());
         }
 

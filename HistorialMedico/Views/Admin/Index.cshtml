@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<HistorialMedico.Models.usuario>
 
 @{
-    
+    Layout = "~/Views/Shared/_AdminLayout/_AdminLayout.cshtml";
     ViewBag.Title = "Index";
 }
 
@@ -18,7 +18,7 @@
 <p>
     @Html.ActionLink("CrearUsuario", "Create", null, new { @class = "btn btn-primary glyphicon glyphicon-plus" })
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
