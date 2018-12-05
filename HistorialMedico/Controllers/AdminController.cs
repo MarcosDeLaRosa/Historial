@@ -64,12 +64,28 @@ namespace HistorialMedico.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_usuario,Nombre,Apellido,Correo,Foto,usuario1,contrasena,roles")] usuario usuario)
+        public ActionResult Create([Bind(Include = "id_usuario,Nombre,Apellido,Correo,Foto,usuario1,contrasena,roles")] usuario usuario, string telefono,
+            [Bind(Include = "Nombre,Apellido,Correo,Foto")] asistente asistente, [Bind(Include = "Nombre,Apellido,Correo,Foto")] doctor doctor)
         {
             if (ModelState.IsValid)
             {
+
+                string resultado = string.Empty;
+                Byte[] encriptar = System.Text.Encoding.Unicode.GetBytes(usuario.contrasena);
+                resultado = Convert.ToBase64String(encriptar);
+                usuario.contrasena = resultado;
                 db.usuario.Add(usuario);
                 db.SaveChanges();
+                if (usuario.roles == "asistente") {
+                    asistente.telefono = telefono;
+                    db.asistente.Add(asistente);
+                    db.SaveChanges();
+
+                } else if (usuario.roles == "doctor") {
+                    doctor.telefono = telefono;
+                    db.doctor.Add(doctor);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
 

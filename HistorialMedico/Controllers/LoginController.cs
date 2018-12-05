@@ -22,9 +22,9 @@ namespace HistorialMedico.Controllers
         [HttpPost]
         public ActionResult Login(string user, string password)
         {
-            ViewBag.isAdmin = true;
 
-            if (user == null || password == null) {
+            if (user == null || password == null)
+            {
                 return RedirectToAction("Error", "Login");
             }
 
@@ -32,7 +32,11 @@ namespace HistorialMedico.Controllers
             {
 
                 usuario usuario = db.usuario.Where(e => e.usuario1 == user).FirstOrDefault();
-                if (usuario.usuario1 == user && usuario.contrasena == password)
+                string resultado = string.Empty;
+                Byte[] desencriptar = Convert.FromBase64String(usuario.contrasena);
+
+                resultado = System.Text.Encoding.Unicode.GetString(desencriptar);
+                if (usuario.usuario1 == user && resultado == password)
                 {
                     if (usuario.roles == "doctor")
                     {
@@ -40,7 +44,7 @@ namespace HistorialMedico.Controllers
                     }
                     else if (usuario.roles == "asistente")
                     {
-                        return RedirectToAction("Index", "asistentes");
+                        return RedirectToAction("Index", "Asistente");
                     }
                 }
             }
