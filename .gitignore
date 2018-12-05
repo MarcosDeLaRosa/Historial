@@ -1,3 +1,8 @@
 .vs
 .vs/
 
+*.cache
+.vs/config/applicationhost.config
+.vs/HistorialMedico/v15/Server/sqlite3/storage.ide-wal
+HistorialMedico/obj/Debug/HistorialMedico.csproj.CoreCompileInputs.cache
+HistorialMedico/obj/Debug/HistorialMedico.csprojAssemblyReference.cache
