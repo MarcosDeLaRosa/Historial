@@ -5,47 +5,47 @@
     ViewBag.Title = "CrearVisita";
 }
 
-<h2>CrearVisita</h2>
+
+    <h2>Crear Visita</h2>
 
 
 <form action="/Doctor/CreateVisita" method="post">
     <div class="form-horizontal">
-        <h4>visita</h4>
         <hr />
 
 
         <div class="form-group">
             <div class="col-md-10">
                 <h4>Paciente</h4>
-                @Html.DropDownListFor(model => model.id_paciente, ViewBag.NombrePaciente as SelectList, "Cliente", new {@Class="btn btn-danger" })
+                @Html.DropDownListFor(model => model.id_paciente, ViewBag.NombrePaciente as SelectList, "Cliente", new { @Class = "btn btn-success", style = "width: 250px;" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
                 <h4>Doctor</h4>
-                @Html.DropDownListFor(model => model.id_doctor, ViewBag.NombreDoctor as SelectList, "Doctor", new {@Class="btn btn-danger" })
+                @Html.DropDownListFor(model => model.id_doctor, ViewBag.NombreDoctor as SelectList, "Doctor", new { @Class = "btn btn-success", style = "width: 250px;" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
                 <h4>Motivo</h4>
-                @Html.EditorFor(model => model.motivo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.motivo, new { htmlAttributes = new { @class = "form-control" , style = "width: 250px;" } })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
                 <h4>Comentario</h4>
-                @Html.EditorFor(model => model.comentario, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.comentario, new { htmlAttributes = new { @class = "form-control" , style = "width: 250px;" } })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
                 <h4>Receta</h4>
-                @Html.EditorFor(model => model.recetaDeMedicmentos, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.recetaDeMedicmentos, new { htmlAttributes = new { @class = "form-control", style = "width: 250px;" } })
 
             </div>
         </div>
@@ -53,22 +53,15 @@
         <div class="form-group">
             <div class="col-md-10">
                 <h4>Fecha De La Proxima Visita:</h4>
-                @Html.EditorFor(model => model.fechaProximaVisita, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.fechaProximaVisita, new { htmlAttributes = new { @class = "form-control", type = "date", style = "width: 250px;" } })
+                <br />
+                <input type="submit" value="Guarar" class="btn btn-success" />
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+
+                
 
     </div>
 </form>
-
-<div class="col-md-offset-2 col-md-10">
-    <a href="visitaPaciente"><input type="submit" value="Visitas de Cliente" class="btn btn-primary" /></a>
-</div>
-
-
 

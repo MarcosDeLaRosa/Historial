@@ -5,11 +5,19 @@
     ViewBag.Title = "PagoConsulta";
 }
 
-<h2>Pago De Consulta Por Dia</h2>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Fecha">
-<input type="submit" value="calcular" onclick="CalcularTotal();" class="btn btn-info" />
+<center>
+    <h2>Pago De Consulta Por Dia</h2>
+    <hr />
+</center>
+<br />
+<div class="form-inline">
+    <input type="text" class="form-control" style="width: 250px;" id="myInput" onkeyup="myFunction()" placeholder="Fecha">
+    <input type="submit" value="calcular" onclick="CalcularTotal();" class="btn btn-info" />
+    <input type="submit" value="Volver a Calcular" onclick="refrescar();" class="btn btn-success" />
+</div>
+<br />
 <table class="table" id="myTable">
-    <tr>
+    <tr class="btn-success">
         <th>
             Paciente
         </th>
@@ -23,27 +31,27 @@
             Total
         </th>
         <th>
-            Fecha
+            Fecha
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.paciente.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.precioConsulta.costo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.pago)
-        </td>
-        <td class="deuda">
-            @Html.DisplayFor(modelItem => item.total)
-        </td>
-        <td>@Html.ValueFor(modelItem => item.fecha, "{0:dd/MM/yyyy}")</td>
-    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.paciente.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.precioConsulta.costo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pago)
+            </td>
+            <td class="deuda">
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+            <td>@Html.ValueFor(modelItem => item.fecha, "{0:dd/MM/yyyy}")</td>
+        </tr>
     }
 
 </table>
@@ -51,6 +59,11 @@
 <h4><label id="Ingresar"> </label> </h4>
 
 <script>
+
+    function refrescar() {
+        window.location.reload();
+    }
+
     function CalcularTotal() {
         var veri = document.getElementById("myInput").value;
         if (veri) {
@@ -61,7 +74,7 @@
             });
             document.getElementById("total").innerHTML = totalDeuda;
         } else {
-            document.getElementById("Ingresar").innerHTML = "Ingrese una fecha para saber el total por dia" ;
+            document.getElementById("Ingresar").innerHTML = "Ingrese una fecha para saber el total por dia";
         }
     }
 

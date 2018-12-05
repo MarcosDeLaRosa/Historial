@@ -312,15 +312,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Error.cshtml" />
-    <Content Include="Views\Doctor\Index.cshtml" />
-    <Content Include="Views\Doctor\Create.cshtml" />
     <Content Include="Views\Doctor\CrearVisita.cshtml" />
     <Content Include="Views\Doctor\visitaPaciente.cshtml" />
     <Content Include="Views\Doctor\ImprimirReceta.cshtml" />
     <Content Include="Views\Doctor\crearCita.cshtml" />
     <Content Include="Views\Doctor\citaPaciente.cshtml" />
     <Content Include="Views\Doctor\PagoConsulta.cshtml" />
-    <Content Include="Views\Doctor\TotalFecha.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />

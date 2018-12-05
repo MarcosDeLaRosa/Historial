@@ -5,13 +5,17 @@
     ViewBag.Title = "visitaPaciente";
 }
 
-<h2>visitaPaciente</h2>
-
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Paciente" class="form-control">
+<center>
+    <h2>Visitas de Pacientes</h2>
+</center>
+<div class="form-inline">
+    <h4>Buscar Cita de Paciente: </h4>
+    <input type="text" id="myInput" style="width: 250px;" onkeyup="myFunction()" placeholder="Paciente" class="form-control">
+</div>
 <br />
 
 <table class="table" id="myTable">
-    <tr>
+    <tr class="btn-success">
         <th>
             Nombre
         </th>
@@ -19,7 +23,7 @@
             Apellido
         </th>
         <th>
-            Fecha De Visitas Anteriores
+            Fecha de la Visita
         </th>
     </tr>
 
@@ -51,7 +55,7 @@
 
         
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
+            td = tr[i].getElementsByTagName("td")[2];
             if (td) {
                 if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";

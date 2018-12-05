@@ -72,6 +72,7 @@ namespace HistorialMedico.Controllers
         {
             if (ModelState.IsValid)
             {
+                visita.fecha = null;
                 db.visita.Add(visita);
                 db.SaveChanges();
                 return RedirectToAction("CrearVisita", "Doctor");
