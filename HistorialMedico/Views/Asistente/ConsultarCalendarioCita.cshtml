@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<HistorialMedico.Models.cita>
 
 @{
-    ViewBag.Title= "Index";
+    ViewBag.Title = "Index";
 }
 
 <center>
@@ -10,22 +10,19 @@
 
 <div class="form-horizontal">
     <hr />
-    <input type="text" class="form-control" id="search" placeholder="Buscador" />
+    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Buscador" />
     <hr />
 </div>
 
 <br />
-<table class="table">
+<table class="table"  id="myTable">
 
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.id_doctor)
+            Doctor
         </th>
         <th>
             @Html.DisplayNameFor(model => model.fechaDeConsulta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.id_cita)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.duracion)
@@ -36,17 +33,15 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
 
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.id_doctor)
+                @Html.DisplayFor(modelItem => item.doctor.nombre)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.fechaDeConsulta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.id_cita)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.duracion)
@@ -55,7 +50,30 @@
                 @Html.DisplayFor(modelItem => item.fechaDeCita)
             </td>
         </tr>
-        
+
     }
 
 </table>
+
+<script>
+  function myFunction() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+    }
+</script>
